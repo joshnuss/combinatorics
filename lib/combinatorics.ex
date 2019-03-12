@@ -32,6 +32,32 @@ defmodule Combinatorics do
     do_powerset(h, pt, pt)
   end
 
+  @doc """
+  Generate all permutations a given list.
+
+  Returns a list.
+
+  ## Examples
+
+    iex> Combinatorics.permutations([:foo, :bar, :baz])
+    [
+      [:foo, :bar, :baz],
+      [:foo, :baz, :bar],
+      [:bar, :foo, :baz],
+      [:bar, :baz, :foo],
+      [:baz, :foo, :bar],
+      [:baz, :bar, :foo]
+    ]
+
+  """
+  def permutations([]), do: [[]]
+
+  def permutations(list) do
+    for h <- list, t <- permutations(list -- [h]) do
+      [h | t]
+    end
+  end
+
   defp do_powerset(_, [], acc), do: acc
 
   defp do_powerset(x, [h | t], acc) do
