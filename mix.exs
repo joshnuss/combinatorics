@@ -7,7 +7,19 @@ defmodule Combinatorics.MixProject do
       version: "0.1.0",
       elixir: "~> 1.8",
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      deps: deps(),
+
+      # Hex
+      description: "Combinatoric utilities for Elixir",
+      package: package(),
+
+      # Docs
+      source_url: "https://github.com/joshnuss/combinatorics",
+      homepage_url: "http://github.com/joshnuss/combinatorics",
+      docs: [
+        main: "Combinatorics",
+        extras: ["README.md"]
+      ]
     ]
   end
 
@@ -15,6 +27,13 @@ defmodule Combinatorics.MixProject do
   def application do
     [
       extra_applications: [:logger]
+    ]
+  end
+
+  defp package do
+    [
+      licenses: ["MIT"],
+      links: %{"GitHub" => "https://github.com/joshnuss/combinatorics"},
     ]
   end
 
