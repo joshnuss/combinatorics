@@ -1,7 +1,7 @@
 defmodule Combinatorics do
   @moduledoc """
   Utility for generating combinatorics.
-  Based on [implementation in CouchDB](https://github.com/apache/couchdb/blob/master/src/couch_tests/src/couch_tests_combinatorics.erl).
+  Extracted from the [implementation in CouchDB](https://github.com/apache/couchdb/blob/master/src/couch_tests/src/couch_tests_combinatorics.erl).
   """
 
   @doc """
@@ -11,17 +11,17 @@ defmodule Combinatorics do
 
   ## Examples
 
-    iex> Combinatorics.powerset([:foo, :bar, :baz])
-    [
-        [:foo],
-        [:foo,:baz],
-        [:foo,:bar,:baz],
-        [:foo,:bar],
-        [:bar],
-        [:bar,:baz],
-        [:baz],
-        []
-    ]
+      iex> Combinatorics.powerset([:foo, :bar, :baz])
+      [
+          [:foo],
+          [:foo,:baz],
+          [:foo,:bar,:baz],
+          [:foo,:bar],
+          [:bar],
+          [:bar,:baz],
+          [:baz],
+          []
+      ]
 
   """
   @spec powerset(list()) :: [list()]
@@ -40,15 +40,15 @@ defmodule Combinatorics do
 
   ## Examples
 
-    iex> Combinatorics.permutations([:foo, :bar, :baz])
-    [
-      [:foo, :bar, :baz],
-      [:foo, :baz, :bar],
-      [:bar, :foo, :baz],
-      [:bar, :baz, :foo],
-      [:baz, :foo, :bar],
-      [:baz, :bar, :foo]
-    ]
+      iex> Combinatorics.permutations([:foo, :bar, :baz])
+      [
+        [:foo, :bar, :baz],
+        [:foo, :baz, :bar],
+        [:bar, :foo, :baz],
+        [:bar, :baz, :foo],
+        [:baz, :foo, :bar],
+        [:baz, :bar, :foo]
+      ]
 
   """
   @spec permutations(list()) :: list()
@@ -67,15 +67,15 @@ defmodule Combinatorics do
 
   ## Examples
 
-    iex> Combinatorics.product([ [:foo, :bar], [1, 2, 3] ])
-    [
-      [:foo, 1],
-      [:foo, 2],
-      [:foo, 3],
-      [:bar, 1],
-      [:bar, 2],
-      [:bar, 3]
-    ]
+      iex> Combinatorics.product([ [:foo, :bar], [1, 2, 3] ])
+      [
+        [:foo, 1],
+        [:foo, 2],
+        [:foo, 3],
+        [:bar, 1],
+        [:bar, 2],
+        [:bar, 3]
+      ]
 
   """
   @spec product([list()]) :: [list()]
@@ -92,23 +92,23 @@ defmodule Combinatorics do
   end
 
   @doc """
-  Generate all combinations of true or false for a given number of bits.
+  Generate all combinations of `true` or `false` for a given number of bits.
 
   Returns a list of lists.
 
   ## Examples
 
-    iex> Combinatorics.binary_combinations(3)
-    [
-       [ false , false , false ],
-       [ false , false , true  ],
-       [ false , true  , false ],
-       [ false , true  , true  ],
-       [ true  , false , false ],
-       [ true  , false , true  ],
-       [ true  , true  , false ],
-       [ true  , true  , true  ]
-    ]
+      iex> Combinatorics.binary_combinations(3)
+      [
+         [ false , false , false ],
+         [ false , false , true  ],
+         [ false , true  , false ],
+         [ false , true  , true  ],
+         [ true  , false , false ],
+         [ true  , false , true  ],
+         [ true  , true  , false ],
+         [ true  , true  , true  ]
+      ]
 
   """
   @spec binary_combinations(pos_integer()) :: [list(boolean())]
@@ -123,23 +123,23 @@ defmodule Combinatorics do
 
   ## Examples
 
-  iex> Combinatorics.n_combinations(2, [:mon, :tue, :wed, :thu, :fri])
-  [
-    [:mon, :tue],
-    [:mon, :wed],
-    [:mon, :thu],
-    [:mon, :fri],
-    [:tue, :wed],
-    [:tue, :thu],
-    [:tue, :fri],
-    [:wed, :thu],
-    [:wed, :fri],
-    [:thu, :fri]
-  ]
+      iex> Combinatorics.n_combinations(2, [:mon, :tue, :wed, :thu, :fri])
+      [
+        [:mon, :tue],
+        [:mon, :wed],
+        [:mon, :thu],
+        [:mon, :fri],
+        [:tue, :wed],
+        [:tue, :thu],
+        [:tue, :fri],
+        [:wed, :thu],
+        [:wed, :fri],
+        [:thu, :fri]
+      ]
 
   """
   @spec n_combinations(pos_integer(), list()) :: [list()]
-  def n_combinations(0, _), do: [[]]
+  def n_combinations(0, _list), do: [[]]
   def n_combinations(_, []), do: []
 
   def n_combinations(n, [h | t]) do
