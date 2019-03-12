@@ -31,4 +31,18 @@ defmodule CombinatoricsTest do
              [:baz, :bar, :foo]
            ]
   end
+
+  test "product" do
+    assert product([]) == []
+    assert product([[:foo, :bar]]) == [[:foo], [:bar]]
+
+    assert product([[:foo, :bar], [1, 2, 3]]) == [
+             [:foo, 1],
+             [:foo, 2],
+             [:foo, 3],
+             [:bar, 1],
+             [:bar, 2],
+             [:bar, 3]
+           ]
+  end
 end

@@ -34,9 +34,9 @@ defmodule Combinatorics do
   end
 
   @doc """
-  Generate all permutations a given list.
+  Generate all permutations of a given list of lists.
 
-  Returns a list.
+  Returns a list of lists.
 
   ## Examples
 
@@ -57,6 +57,37 @@ defmodule Combinatorics do
   def permutations(list) do
     for h <- list, t <- permutations(list -- [h]) do
       [h | t]
+    end
+  end
+
+  @doc """
+  Generate all product a given list.
+
+  Returns a list.
+
+  ## Examples
+
+    iex> Combinatorics.product([ [:foo, :bar], [1, 2, 3] ])
+    [
+      [:foo, 1],
+      [:foo, 2],
+      [:foo, 3],
+      [:bar, 1],
+      [:bar, 2],
+      [:bar, 3]
+    ]
+
+  """
+  @spec product(list(list())) :: list(list())
+  def product([]), do: []
+
+  def product([h]) do
+    for x <- h, do: [x]
+  end
+
+  def product([h | t]) do
+    for a <- h, b <- product(t) do
+      [a | b]
     end
   end
 
