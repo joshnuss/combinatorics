@@ -2,6 +2,8 @@
 
 Utility functions for generating combinatoric.
 
+**Credit**: This is lifted from CouchDB's [testing code](https://github.com/apache/couchdb/blob/master/src/couch_tests/src/couch_tests_combinatorics.erl).
+
 ### Supported operations
 
 - binary combinations
