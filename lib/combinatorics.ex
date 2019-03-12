@@ -24,6 +24,7 @@ defmodule Combinatorics do
     ]
 
   """
+  @spec powerset(list()) :: list()
   def powerset([]), do: [[]]
 
   def powerset([h | t]) do
@@ -50,6 +51,7 @@ defmodule Combinatorics do
     ]
 
   """
+  @spec permutations(list()) :: list()
   def permutations([]), do: [[]]
 
   def permutations(list) do
