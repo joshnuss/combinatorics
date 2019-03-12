@@ -45,4 +45,17 @@ defmodule CombinatoricsTest do
              [:bar, 3]
            ]
   end
+
+  test "binary_combinations" do
+    assert binary_combinations(3) == [
+       [ false , false , false ],
+       [ false , false , true  ],
+       [ false , true  , false ],
+       [ false , true  , true  ],
+       [ true  , false , false ],
+       [ true  , false , true  ],
+       [ true  , true  , false ],
+       [ true  , true  , true  ]
+    ]
+  end
 end

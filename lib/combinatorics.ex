@@ -24,7 +24,7 @@ defmodule Combinatorics do
     ]
 
   """
-  @spec powerset(list()) :: list()
+  @spec powerset(list()) :: [list()]
   def powerset([]), do: [[]]
 
   def powerset([h | t]) do
@@ -78,7 +78,7 @@ defmodule Combinatorics do
     ]
 
   """
-  @spec product(list(list())) :: list(list())
+  @spec product([list()]) :: [list()]
   def product([]), do: []
 
   def product([h]) do
@@ -89,6 +89,31 @@ defmodule Combinatorics do
     for a <- h, b <- product(t) do
       [a | b]
     end
+  end
+
+  @doc """
+  Generate all combinations of true or false for a given number of bits.
+
+  Returns a list of lists.
+
+  ## Examples
+
+    iex> Combinatorics.binary_combinations(3)
+    [
+       [ false , false , false ],
+       [ false , false , true  ],
+       [ false , true  , false ],
+       [ false , true  , true  ],
+       [ true  , false , false ],
+       [ true  , false , true  ],
+       [ true  , true  , false ],
+       [ true  , true  , true  ]
+    ]
+
+  """
+  @spec binary_combinations(pos_integer()) :: [list(boolean())]
+  def binary_combinations(n) do
+    List.duplicate([false, true], n) |> product()
   end
 
   defp do_powerset(_, [], acc), do: acc
