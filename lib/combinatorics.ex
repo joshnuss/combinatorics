@@ -116,6 +116,38 @@ defmodule Combinatorics do
     List.duplicate([false, true], n) |> product()
   end
 
+  @doc """
+  Generate n number of combinations of items in given list.
+
+  Returns a list of lists with n element.
+
+  ## Examples
+
+  iex> Combinatorics.n_combinations(2, [:mon, :tue, :wed, :thu, :fri])
+  [
+    [:mon, :tue],
+    [:mon, :wed],
+    [:mon, :thu],
+    [:mon, :fri],
+    [:tue, :wed],
+    [:tue, :thu],
+    [:tue, :fri],
+    [:wed, :thu],
+    [:wed, :fri],
+    [:thu, :fri]
+  ]
+
+  """
+  @spec n_combinations(pos_integer(), list()) :: [list()]
+  def n_combinations(0, _), do: [[]]
+  def n_combinations(_, []), do: []
+
+  def n_combinations(n, [h | t]) do
+    list = for l <- n_combinations(n - 1, t), do: [h | l]
+
+    list ++ n_combinations(n, t)
+  end
+
   defp do_powerset(_, [], acc), do: acc
 
   defp do_powerset(x, [h | t], acc) do

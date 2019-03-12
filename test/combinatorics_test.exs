@@ -48,14 +48,32 @@ defmodule CombinatoricsTest do
 
   test "binary_combinations" do
     assert binary_combinations(3) == [
-       [ false , false , false ],
-       [ false , false , true  ],
-       [ false , true  , false ],
-       [ false , true  , true  ],
-       [ true  , false , false ],
-       [ true  , false , true  ],
-       [ true  , true  , false ],
-       [ true  , true  , true  ]
-    ]
+             [false, false, false],
+             [false, false, true],
+             [false, true, false],
+             [false, true, true],
+             [true, false, false],
+             [true, false, true],
+             [true, true, false],
+             [true, true, true]
+           ]
+  end
+
+  test "n_combinations" do
+    assert n_combinations(0, [1, 2]) == [[]]
+    assert n_combinations(10, []) == []
+
+    assert n_combinations(2, [:mon, :tue, :wed, :thu, :fri]) == [
+             [:mon, :tue],
+             [:mon, :wed],
+             [:mon, :thu],
+             [:mon, :fri],
+             [:tue, :wed],
+             [:tue, :thu],
+             [:tue, :fri],
+             [:wed, :thu],
+             [:wed, :fri],
+             [:thu, :fri]
+           ]
   end
 end
